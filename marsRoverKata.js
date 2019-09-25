@@ -97,7 +97,7 @@ function turnRight(rover){
     }
 }
 
-// rover moves forward
+// rover moves forward and makes sure the rover doesn't accidentally roam off the map
 function moveForward(rover){
 console.log("moveForward was called")
     if(rover.direction == "N" && rover.x > 0){
@@ -115,8 +115,33 @@ console.log("moveForward was called")
     else{
         console.log("You reached the end of the grid, please choose another direction.");
     }
+    // tracking of the rovers last position, stored as array in the rover object
     let lastPosition = {x:rover.x,y:rover.y};
         rover.travelLog.push(lastPosition);
 }
+
+// moves rover backwards
+function moveBackward(rover){
+    console.log("moveBackward was called")
+    if(rover.direction == "N" && rover.x < 9){
+        rover.x++;
+    }
+    else if(rover.direction == "S" && rover.x > 0){
+        rover.x--;
+    }
+    else if(rover.direction == "E" && rover.y > 0){
+        rover.y--;
+    }
+    else if(rover.direction == "W" && rover.y < 9){
+        rover.y++;
+    }
+    else{
+        console.log("You reached the end of the grid, please choose another direction.");
+    }
+    // tracking of the rovers last position, stored as array in the rover object
+    let lastPosition = {x:rover.x,y:rover.y};
+        rover.travelLog.push(lastPosition);
+}
+
 
 
