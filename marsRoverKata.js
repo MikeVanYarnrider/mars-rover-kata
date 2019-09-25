@@ -52,6 +52,9 @@ function command(rover,commands){
             case "f":
                 moveForward(rover);
                 break;
+            case "b":
+                moveBackward(rover);
+                break;
             default:
                 console.log("Error");
         }
