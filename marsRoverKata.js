@@ -42,25 +42,32 @@ const rover = {
 function command(rover,commands){
     for(let i = 0; i < commands.length; i++){
         let command = commands[i];
-        switch (command) {
-            case "l":
-                turnLeft(rover);
-                break;
-            case "r":
-                turnRight(rover);
-                break;
-            case "f":
-                moveForward(rover);
-                break;
-            case "b":
-                moveBackward(rover);
-                break;
-            default:
-                console.log("Error");
+        // validation for the right input. loop runs as long as the commands are correct and breaks when an invalid char occurs
+        if (command == "l" ||command == "r" ||command == "b" ||command == "f"){
+            switch (command) {
+                case "l":
+                    turnLeft(rover);
+                    break;
+                case "r":
+                    turnRight(rover);
+                    break;
+                case "f":
+                    moveForward(rover);
+                    break;
+                case "b":
+                    moveBackward(rover);
+                    break;
+                default:
+                    console.log("Error");
+            }
+            console.log(`Rover Position: ${rover.x},${rover.y}`);
+            console.log(`Rover Direction: ${rover.direction}`)
         }
-        console.log(`Rover Position: ${rover.x},${rover.y}`);
-        console.log(`Rover Direction: ${rover.direction}`)
-
+        else {
+            console.log("Please check your input. Use l,f,b,r only");
+            // break statement to stop the for loop when a wrong input occurs
+            break;              
+        }
     }
 }
 
