@@ -61,6 +61,7 @@ function command(rover,commands){
     }
 }
 
+// rover turns left
 
 function turnLeft(rover){
     console.log("turnLeft was called!");
@@ -76,27 +77,27 @@ function turnLeft(rover){
     else if(rover.direction == "E"){
         rover.direction = "N";
   }
-//   console.log(`Rover Direction: ${rover.direction}`)
 }
+
+// rover turns right
 
 function turnRight(rover){
-console.log("turnRight was called!");
-if(rover.direction == "N"){
-    rover.direction = "E";
-}
-else if(rover.direction == "E"){
-    rover.direction = "S";
-}
-else if(rover.direction == "S"){
-    rover.direction = "W";
-}
-else if(rover.direction == "W"){
-    rover.direction = "N";
-}
-// console.log(`Rover Direction: ${rover.direction} / ${rover.movingDirection}`)
+    console.log("turnRight was called!");
+    if(rover.direction == "N"){
+        rover.direction = "E";
+    }
+    else if(rover.direction == "E"){
+        rover.direction = "S";
+    }
+    else if(rover.direction == "S"){
+        rover.direction = "W";
+    }
+    else if(rover.direction == "W"){
+        rover.direction = "N";
+    }
 }
 
-
+// rover moves forward
 function moveForward(rover){
 console.log("moveForward was called")
     if(rover.direction == "N" && rover.x > 0){
@@ -116,7 +117,6 @@ console.log("moveForward was called")
     }
     let lastPosition = {x:rover.x,y:rover.y};
         rover.travelLog.push(lastPosition);
-    // console.log(`Rover Position: ${rover.x},${rover.y}`);
 }
 
 
