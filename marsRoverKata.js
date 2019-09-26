@@ -25,6 +25,8 @@ const rover = {
     travelLog: [{x:0,y:0}],
 }
 
+let lastPosition = { x: rover.x, y: rover.y };
+
 // ======================
 
 // loops through given commands and calls every function according to each case
@@ -36,21 +38,30 @@ function command(rover,commands){
             switch (command) {
                 case "l":
                     turnLeft(rover);
+                    // travelLog();
+                    // roverPosition();
                     break;
                 case "r":
                     turnRight(rover);
+                    // travelLog();
+                    // roverPosition();
                     break;
                 case "f":
                     moveForward(rover);
+                    // travelLog();
+                    // roverPosition();
                     break;
                 case "b":
                     moveBackward(rover);
+                    // travelLog();
+                    // roverPosition();
                     break;
                 default:
                     console.log("Error");
             }
             console.log(`Rover Position: ${rover.x},${rover.y}`);
-            console.log(`Rover Direction: ${rover.direction}`)
+            console.log(`Rover Direction: ${rover.direction}`);
+            travelLog();
             roverPosition();
         }
         else {
@@ -113,9 +124,7 @@ console.log("moveForward was called")
     else{
         console.log("You reached the end of the grid, please choose another direction.");
     }
-    // tracking of the rovers last position, stored as array in the rover object
-    let lastPosition = {x:rover.x,y:rover.y};
-        rover.travelLog.push(lastPosition);
+
 }
 
 // moves rover backwards
@@ -136,16 +145,21 @@ function moveBackward(rover){
     else{
         console.log("You reached the end of the grid, please choose another direction.");
     }
-    // tracking of the rovers last position, stored as array in the rover object
-    let lastPosition = {x:rover.x,y:rover.y};
-        rover.travelLog.push(lastPosition);
 }
 
 // function to move the rover position on the board
 function roverPosition(){
-    // sets position on the board
-    board[rover.x][rover.y] = 'R'
     // deletes the last position on the board
     board[rover.travelLog[rover.travelLog.length-2].x][rover.travelLog[rover.travelLog.length-2].y] = ' ';
-    console.log(board.join('\n'))
+    // sets position on the board
+    board[rover.x][rover.y] = 'R';
+    console.log(board.join('\n'));
     };
+
+// updates the travelLog array in the rover object 
+function travelLog() {
+    lastPosition = { x: rover.x, y: rover.y };
+    rover.travelLog.push(lastPosition);
+}
+
+    command(rover,"rffrfflfrff");
