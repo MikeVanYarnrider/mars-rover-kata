@@ -38,23 +38,15 @@ function command(rover,commands){
             switch (command) {
                 case "l":
                     turnLeft(rover);
-                    // travelLog();
-                    // roverPosition();
                     break;
                 case "r":
                     turnRight(rover);
-                    // travelLog();
-                    // roverPosition();
                     break;
                 case "f":
                     moveForward(rover);
-                    // travelLog();
-                    // roverPosition();
                     break;
                 case "b":
                     moveBackward(rover);
-                    // travelLog();
-                    // roverPosition();
                     break;
                 default:
                     console.log("Error");
@@ -124,7 +116,6 @@ console.log("moveForward was called")
     else{
         console.log("You reached the end of the grid, please choose another direction.");
     }
-
 }
 
 // moves rover backwards
@@ -161,5 +152,3 @@ function travelLog() {
     lastPosition = { x: rover.x, y: rover.y };
     rover.travelLog.push(lastPosition);
 }
-
-    command(rover,"rffrfflfrff");
