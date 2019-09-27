@@ -8,7 +8,7 @@ let board = [
     [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
     [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
     [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
-    [' ',' ',' ',' ',' ','O',' ',' ',' ',' '], //obstacle at [6][5]
+    [' ',' ',' ',' ',' ',' ','O',' ',' ',' '], //obstacle at [6][5]
     [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
     [' ',' ',' ',' ',' ',' ',' ',' ',' ',' '],
     [' ',' ',' ',' ',' ',' ',' ',' ',' ',' ']
@@ -23,9 +23,14 @@ const rover = {
     x: 0,
     y: 0,
     travelLog: [{x:0,y:0}],
-}
+};
 
-let lastPosition = { x: rover.x, y: rover.y };
+let lastPosition = { 
+    x: rover.x, 
+    y: rover.y 
+};
+
+
 
 // ======================
 
@@ -103,15 +108,31 @@ function moveForward(rover){
 console.log("moveForward was called")
     if(rover.direction == "N" && rover.x > 0){
         rover.x--;
+        if(board[rover.x][rover.y] != ' '){
+            rover.x++;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else if(rover.direction == "S" && rover.x < 9){
         rover.x++;
+        if(board[rover.x][rover.y] != ' '){
+            rover.x--;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else if(rover.direction == "E" && rover.y < 9){
         rover.y++;
+        if(board[rover.x][rover.y] != ' '){
+            rover.y--;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else if(rover.direction == "W" && rover.y > 0){
         rover.y--;
+        if(board[rover.x][rover.y] != ' '){
+            rover.y++;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else{
         console.log("You reached the end of the grid, please choose another direction.");
@@ -123,15 +144,31 @@ function moveBackward(rover){
     console.log("moveBackward was called")
     if(rover.direction == "N" && rover.x < 9){
         rover.x++;
+        if(board[rover.x][rover.y] != ' '){
+            rover.x--;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else if(rover.direction == "S" && rover.x > 0){
         rover.x--;
+        if(board[rover.x][rover.y] != ' '){
+            rover.x++;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else if(rover.direction == "E" && rover.y > 0){
         rover.y--;
+        if(board[rover.x][rover.y] != ' '){
+            rover.y++;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else if(rover.direction == "W" && rover.y < 9){
         rover.y++;
+        if(board[rover.x][rover.y] != ' '){
+            rover.y++;
+            console.log("Watch out! Obstacle in sight!");
+        }
     }
     else{
         console.log("You reached the end of the grid, please choose another direction.");
