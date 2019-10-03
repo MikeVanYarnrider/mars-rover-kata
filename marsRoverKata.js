@@ -20,14 +20,14 @@ let board = [
 
 const rover = [
     {
-        alias: "Klaus"
+        alias: "Klaus",
         direction : "N",                    //four possible values: "N", "S", "E", or "W". The rover's default direction will be "N" (as North)
         x: 0,
         y: 0,
         travelLog: [{x:0,y:0}],
     },
     {
-        alias: "Sandra"
+        alias: "Sandra",
         direction : "N",                    //four possible values: "N", "S", "E", or "W". The rover's default direction will be "N" (as North)
         x: 9,
         y: 9,
