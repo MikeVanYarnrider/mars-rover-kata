@@ -18,20 +18,36 @@ let board = [
 // Rover Object Goes Here
 // ======================
 
-const rover = {
-    direction : "N",                    //four possible values: "N", "S", "E", or "W". The rover's default direction will be "N" (as North)
-    x: 0,
-    y: 0,
-    travelLog: [{x:0,y:0}],
-};
+const rover = [
+    {
+        alias: "Klaus"
+        direction : "N",                    //four possible values: "N", "S", "E", or "W". The rover's default direction will be "N" (as North)
+        x: 0,
+        y: 0,
+        travelLog: [{x:0,y:0}],
+    },
+    {
+        alias: "Sandra"
+        direction : "N",                    //four possible values: "N", "S", "E", or "W". The rover's default direction will be "N" (as North)
+        x: 9,
+        y: 9,
+        travelLog: [{x:0,y:0}],
+    }
+];
 
 let lastPosition = { 
-    x: rover.x, 
-    y: rover.y 
+    first: {
+        x: rover.x, 
+        y: rover.y 
+    },
+    second: {
+        x: rover.x, 
+        y: rover.y 
+    },
 };
 
 // Error Messages
-const msgObstacle = "Watch out! Obstacle in sight!";
+const msgObstacle = "Watch out! Obstacle or Rover in sight!";
 const msgGridEnd = "You reached the end of the grid, please choose another direction.";
 
 // ======================
@@ -60,8 +76,8 @@ function command(rover,commands){
             }
             console.log(`Rover Position: ${rover.x},${rover.y}`);
             console.log(`Rover Direction: ${rover.direction}`);
-            travelLog();
-            roverPosition();
+            travelLog(rover);
+            roverPosition(rover);
         }
         else {
             console.log("Please check your input. Use l,f,b,r only");
@@ -179,18 +195,23 @@ function moveBackward(rover){
 
 // function to move the rover position on the board
 function roverPosition(){
+    for(let i = 0; i < rover.length; i++){
     // deletes the last position on the board
-    board[rover.travelLog[rover.travelLog.length-2].x][rover.travelLog[rover.travelLog.length-2].y] = ' ';
+    board[rover[i].travelLog[rover[i].travelLog.length-2].x][rover[i].travelLog[rover[i].travelLog.length-2].y] = ' ';
     // sets position on the board
-    board[rover.x][rover.y] = 'R';
+    board[rover[i].x][rover[i].y] = 'R';
+    }
     console.log(board.join('\n'));
 }
 
 // updates the travelLog array in the rover object 
 function travelLog() {
-    lastPosition = { x: rover.x, y: rover.y };
-    rover.travelLog.push(lastPosition);
+    for(let i = 0; i < rover.length; i++){
+    rover[i].lastPosition = { x: rover[i].x, y: rover[i].y };
+    rover[i].travelLog.push(rover[i].lastPosition);
+    }
 }
 
 // test command => navigates to end of grid and then to the first obstacle
-command(rover,"frffrff");
+command(rover[0],"frffrff");
+command(rover[1],"ffflfff");
