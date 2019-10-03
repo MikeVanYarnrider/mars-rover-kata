@@ -191,3 +191,6 @@ function travelLog() {
     lastPosition = { x: rover.x, y: rover.y };
     rover.travelLog.push(lastPosition);
 }
+
+// test command => navigates to end of grid and then to the first obstacle
+command(rover,"frffrff");
