@@ -20,14 +20,16 @@ let board = [
 
 const rover = [
     {
-        alias: "Klaus",
+        name: "Klaus",
+        alias: "K",
         direction : "N",                    //four possible values: "N", "S", "E", or "W". The rover's default direction will be "N" (as North)
         x: 0,
         y: 0,
         travelLog: [{x:0,y:0}],
     },
     {
-        alias: "Sandra",
+        name: "Sandra",
+        alias: "S",
         direction : "N",                    //four possible values: "N", "S", "E", or "W". The rover's default direction will be "N" (as North)
         x: 9,
         y: 9,
@@ -199,7 +201,7 @@ function roverPosition(){
     // deletes the last position on the board
     board[rover[i].travelLog[rover[i].travelLog.length-2].x][rover[i].travelLog[rover[i].travelLog.length-2].y] = ' ';
     // sets position on the board
-    board[rover[i].x][rover[i].y] = 'R';
+    board[rover[i].x][rover[i].y] = rover[i].alias;
     }
     console.log(board.join('\n'));
 }
